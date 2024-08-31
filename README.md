@@ -1,4 +1,4 @@
-1- class Assessment CRUD 
+1- class Assessment  
 2-class Resume 
 3-c;ass Events 
 5-class Tasks
