@@ -10,6 +10,7 @@
 
 1- 
   public String calculateEventDuration(Integer eventId) {
+  
         Events event = eventsRepository.findEventsById(eventId);
 
         if (event.getStartDate() != null && event.getEndDate() != null) {
@@ -28,6 +29,7 @@
         
 2-
     public void assignTaskToGroup(Integer groupId, String type, Tasks tasks) {
+    
         Groups group = groupsRepository.findById(groupId)
                 .orElseThrow(() -> new ApiException("Group not found"));
 
@@ -48,6 +50,7 @@
 
 3-
    public List<Tasks> groupTasks(Integer groupId) {
+   
         // Retrieve the group by ID
         Groups group = groupsRepository.findGroupByGroupId(groupId);
         if (group == null) {
@@ -59,6 +62,7 @@
 
 4-
      public String assignTeamPerformanceReport(Integer groupId, Integer taskId, int ratingTeamPerform) {
+     
         Groups group = groupsRepository.findGroupByGroupId(groupId);
         Tasks task = taskRepository.findTaskByTaskId(taskId);
 
@@ -82,6 +86,7 @@
     }
 5-
  public List<Expert> filterExpertsBySpecialty(String major) {
+ 
         List<Expert> experts = expertRepository.findAll();
         Set<String> seen = new HashSet<>();
         List<Expert> filteredExperts = new ArrayList<>();
@@ -99,6 +104,7 @@
     
 6-
   public List<Expert> findExpertsBySkills(String skills) {
+  
        List<Expert> experts =expertRepository.findExpertBySkills(skills);
        if (experts == null) {
            throw new ApiException("Expert not found with skills");
@@ -110,6 +116,7 @@
     
 7-
   public String getFeedbackForRequest(Integer requestId) {
+  
         Request feedbackRequest = requestRepository.findRequestByReqId(requestId);
 
         if (feedbackRequest == null) {
@@ -125,6 +132,7 @@
 
 8-
 public List<Request> getActiveRequestsForExpert(Integer expertId) {
+
         Expert expert = expertRepository.findExpertByExpertId(expertId);
         List<Request> activeList=(List<Request>) requestRepository.findByExpertAndStatus(expert, "active");
 
@@ -139,6 +147,7 @@ public List<Request> getActiveRequestsForExpert(Integer expertId) {
 
 9-
    public void createRequest(Integer userId, Integer expertId, String requestDescription) {
+   
         User user = userRepository.findUserByUsersId(userId);
         Expert expert = expertRepository.findExpertByExpertId(expertId);
 
@@ -166,6 +175,7 @@ public List<Request> getActiveRequestsForExpert(Integer expertId) {
 
 10-
   public void removeMember(Integer groupId, Integer userId) {
+  
         Groups group = groupsRepository.findGroupByGroupId(groupId);
         User user = userRepository.findUserByUsersId(userId);
 
