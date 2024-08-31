@@ -7,6 +7,7 @@
 4-class Tasks
 
 ----------------------- End Point ----------------------
+
 1- 
   public String calculateEventDuration(Integer eventId) {
         Events event = eventsRepository.findEventsById(eventId);
